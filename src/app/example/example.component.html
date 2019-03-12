@@ -1,0 +1,10 @@
+<div class="auth" (click)="onClose()" *ngIf="isOpen">
+    <div class="auth__container" (click)="onClickBody($event)">
+        <input type="email" name="email" title="Enter email">
+        <br>
+        <input type="password" name="password" title="Enter password">
+        <br>
+        <button type="button" (click)="onClose()">Cancel</button>
+        <button type="submit" (click)="onSubmit()">Submit</button>
+    </div>
+</div>

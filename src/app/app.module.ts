@@ -3,6 +3,12 @@ import {NgModule} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
+import {LazyComponentLoaderModule} from './shared/lazy-component-loader/lazy-component-loader.module';
+import {LazyComponentManifest} from './shared/lazy-component-loader/lazy-component-manifest';
+
+const manifests: LazyComponentManifest[] = [
+    {componentId: 'example', path: 'example', loadChildren: './example/example.module#ExampleModule'}
+];
 
 @NgModule({
     declarations: [
@@ -10,10 +16,12 @@ import {AppComponent} from './app.component';
     ],
     imports: [
         BrowserModule,
-        AppRoutingModule
+        AppRoutingModule,
+        LazyComponentLoaderModule.forRoot(manifests)
     ],
-    providers: [],
-    bootstrap: [AppComponent]
+    bootstrap: [
+        AppComponent
+    ]
 })
 
 export class AppModule {
